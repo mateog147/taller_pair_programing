@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 /**
  * Clase Calculadora.
  *
- * Contiene los metodos necesarios para efectuar sobre dos numeros las 4 operaciones basicas.
+ * Contiene los métodos necesarios para efectuar sobre dos números las 4 operaciones básicas.
  * - Suma.
  * - Resta.
  * - Multiplicación.
@@ -20,23 +20,23 @@ import java.util.logging.Logger;
  */
 public class Calculator {
     /**
-     * Primer numero  de la operación, en caso de la division es el dividendo:
+     * Primer número de la operación, en caso de la division es el dividendo:
      */
     private double numberA;
     /**
-     * Segundo numero  de la operación, en caso de la division es el divisor.
+     * Segundo número de la operación, en caso de la division es el divisor.
      */
     private double numberB;
     /**
-     * Indentificador de la operación a ejecutar, entre 1 y 4.
+     * Identificador de la operación a ejecutar, entre 1 y 4.
      */
     private int operator;
     /**
-     * Resultado de efectuar la operación seleccionada para los dos numeros ingresados:
+     * Resultado de efectuar la operación seleccionada para los dos números ingresados:
      */
     private double result;
     /**
-     * Instancia de la clase loger, para registrar mensajes en consola
+     * Instancia de la clase logger, para registrar mensajes en consola
      */
     private final Logger logger = Logger.getLogger("logger");
     /**
@@ -44,25 +44,38 @@ public class Calculator {
      */
     private final Scanner values;
 
+    /**
+     * Constructor de la clase Calculadora
+     * Se instancia el objeto Scanner
+     */
     public Calculator() {
         this.values = new Scanner(System.in);
     }
 
+    /**
+     * Método para el ingreso de los operandos
+     * Se solicita por consola los dos números a operar
+     */
     public void inputNumber() {
-
         logger.info("Ingrese el primer número: ");
         numberA = values.nextDouble();
         logger.info("Ingrese el segundo número: ");
         numberB = values.nextDouble();
-
     }
 
+    /**
+     * Método para seleccionar el operador
+     * Se solicita por consola elegir alguna de las 4 operaciones y se ejecuta el método de la operación seleccionada
+     */
     public  void selectOperator(){
         logger.info("Seleccione la operación deseada:\n1.Suma\n2.Resta\n3.Multiplicación\n4.División");
         operator = values.nextInt();
         executeOperation();
     }
 
+    /**
+     * Método para ejecutar la operación
+     */
     private void executeOperation(){
         switch (operator) {
             case 1 -> this.addition();
