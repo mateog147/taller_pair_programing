@@ -11,7 +11,7 @@ public class Calculator {
     Logger logger = Logger.getLogger("logger");
     private final Scanner values;
 
-    public Calculator(Scanner values) {
+    public Calculator() {
         this.values = new Scanner(System.in);
     }
 
@@ -21,4 +21,31 @@ public class Calculator {
         logger.info("Ingrese el segundo número: ");
         numberB = values.nextDouble();
     }
+
+    public  void selectOperator(){
+        logger.info("Seleccione la operación deseasda:\n1. Suma\n2.Resta\n3.Multiplicación\n4.División");
+        operator = values.nextInt();
+    }
+
+    private void executeOperation(){
+        switch(operator){
+            case 1: this.addition();
+                break;
+
+            case 2: this.subtract();
+                break;
+
+            case 3: this.multiplication();
+                break;
+
+            case 4: this.division();
+                break;
+
+            default:
+                logger.warning("Opción no valida.");
+
+        }
+    }
+
+
 }
