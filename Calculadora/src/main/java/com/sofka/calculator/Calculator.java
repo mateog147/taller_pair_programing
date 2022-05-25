@@ -1,6 +1,7 @@
 package com.sofka.calculator;
 
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Calculator {
@@ -23,29 +24,42 @@ public class Calculator {
     }
 
     public  void selectOperator(){
-        logger.info("Seleccione la operación deseasda:\n1. Suma\n2.Resta\n3.Multiplicación\n4.División");
+        logger.info("Seleccione la operación deseada:\n1.Suma\n2.Resta\n3.Multiplicación\n4.División");
         operator = values.nextInt();
+        executeOperation();
     }
 
     private void executeOperation(){
-        switch(operator){
-            case 1: this.addition();
-                break;
-
-            case 2: this.subtract();
-                break;
-
-            case 3: this.multiplication();
-                break;
-
-            case 4: this.division();
-                break;
-
-            default:
-                logger.warning("Opción no valida.");
-
+        switch (operator) {
+            case 1 -> this.addition();
+            case 2 -> this.subtraction();
+            case 3 -> this.multiplication();
+            case 4 -> this.division();
+            default -> logger.warning("Opción no valida.");
         }
     }
 
+    private void addition(){
+        result = numberA + numberB;
+    }
 
+    private void subtraction(){
+        result = numberA - numberB;
+    }
+
+    private void multiplication(){
+        result = numberA * numberB;
+    }
+
+    private void division(){
+        result = numberA / numberB;
+    }
+
+    public void printResult(){
+        try{
+            logger.log(Level.INFO,"El resultado es {0}", result);
+        }catch(Exception e) {
+            logger.log(Level.WARNING,"Error en la operación");
+        }
+    }
 }
