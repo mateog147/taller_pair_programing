@@ -17,10 +17,12 @@ public class Calculator {
     }
 
     public void inputNumber() {
+
         logger.info("Ingrese el primer número: ");
         numberA = values.nextDouble();
         logger.info("Ingrese el segundo número: ");
         numberB = values.nextDouble();
+
     }
 
     public  void selectOperator(){
@@ -58,8 +60,8 @@ public class Calculator {
     public void printResult(){
         try{
             logger.log(Level.INFO,"El resultado es {0}", result);
-        }catch(Exception e) {
-            logger.log(Level.WARNING,"Error en la operación");
+        }catch(ArithmeticException e) {
+            logger.log(Level.WARNING,"Error en el resultado");
         }
     }
 }
